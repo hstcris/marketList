@@ -1,10 +1,9 @@
 package com.example.marketList.service;
 
 import com.example.marketList.model.PurchaseList;
-import com.example.marketList.service.SupermarketApiService;
+import com.example.marketList.repositories.PurchaseListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 import java.util.List;
 

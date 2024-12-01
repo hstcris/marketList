@@ -20,12 +20,8 @@ public class PriceHistory {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
 
-        @ManyToOne
-        @JoinColumn(name = "purchase_item_id", nullable = false)
-        private PurchaseItem purchaseItem;
-
-        @Column(name = "tenant_id", nullable = false)
-        private String tenantId;
+        @Column(name = "product_name", nullable = false)
+        private String productName;
 
         @Column(name = "price", nullable = false)
         private BigDecimal price;
@@ -33,5 +29,11 @@ public class PriceHistory {
         @Column(name = "date", nullable = false)
         private LocalDate date;
 
-}
+        @ManyToOne
+        @JoinColumn(name = "purchase_list_id", referencedColumnName = "id")
+        private PurchaseList purchaseList;
 
+        @Column(name = "tenant_id", nullable = false)
+        private String tenantId;
+
+}

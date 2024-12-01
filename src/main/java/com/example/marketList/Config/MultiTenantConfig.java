@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -32,13 +31,23 @@ public class MultiTenantConfig {
     private Map<Object, Object> getDataSources() {
         Map<Object, Object> dataSources = new HashMap<>();
 
-        DataSource tenant1DataSource = createDataSource("jdbc:mysql://localhost:3306/market_tenant1", "user1", "password1");
-        DataSource tenant2DataSource = createDataSource("jdbc:mysql://localhost:3306/market_tenant2", "user2", "password2");
+        String tenant1Url = "jdbc:mysql://localhost:3306/market_tenant1";
+        String tenant2Url = "jdbc:mysql://localhost:3306/market_tenant2";
 
-        dataSources.put("tenant1", tenant1DataSource);
-        dataSources.put("tenant2", tenant2DataSource);
+        dataSources.put("tenant1", createDataSource(tenant1Url));
+        dataSources.put("tenant2", createDataSource(tenant2Url));
 
         return dataSources;
+    }
+
+    private DataSource createDataSource(String dbUrl) {
+        HikariDataSource dataSource = new HikariDataSource();
+        dataSource.setJdbcUrl(dbUrl);
+        dataSource.setUsername("root");
+        dataSource.setPassword("password");
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+
+        return dataSource;
     }
 
     @Bean
@@ -49,6 +58,7 @@ public class MultiTenantConfig {
                 return tenantIdentifierResolver.resolveCurrentTenantIdentifier();
             }
         };
+
         dataSourceRouting.setTargetDataSources(getDataSources());
         return dataSourceRouting;
     }
@@ -58,6 +68,7 @@ public class MultiTenantConfig {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource);
         factoryBean.setPackagesToScan("com.example.model");
+        factoryBean.setPersistenceUnitName("market");
         return factoryBean;
     }
 
@@ -65,22 +76,4 @@ public class MultiTenantConfig {
     public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
         return new JpaTransactionManager(entityManagerFactory);
     }
-
-    private DataSource createDataSource(String url, String username, String password) {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl(url);
-        dataSource.setUsername(username);
-        dataSource.setPassword(password);
-        return dataSource;
-    }
-
-    private DataSource createDataSource(String tenantDb) {
-        HikariDataSource dataSource = new HikariDataSource();
-        dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/" + tenantDb);
-        dataSource.setUsername("root");
-        dataSource.setPassword("password");
-        return dataSource;
-    }
 }
-

@@ -4,7 +4,7 @@ Esta é uma aplicação backend desenvolvida com **Spring Boot** e **MySQL** par
 
 ## Funcionalidades
 
-- **Suporte Multi-Tenant**: Suporta múltiplos usuários (famílias), com isolamento de dados.
+- **Suporte Multi-Tenant**: Suporta múltiplos usuários com isolamento de dados.
 - **Gerenciamento de Listas de Compras**: Criar, atualizar e visualizar listas de compras para cada mês.
 - **Acompanhamento de Itens**: Adicionar itens às listas de compras e monitorar a quantidade em estoque.
 - **Busca de Preço em Tempo Real**: Integração com uma API externa de supermercado para buscar preços atualizados dos itens.
@@ -46,7 +46,7 @@ Esta é uma aplicação backend desenvolvida com **Spring Boot** e **MySQL** par
 
 - **Java 11** ou superior
 - **MySQL** instalado e rodando
-- **Maven** ou **Gradle** (dependendo da ferramenta de build que você utiliza)
+- **Maven** 
 
 ### Clonar o Repositório
 

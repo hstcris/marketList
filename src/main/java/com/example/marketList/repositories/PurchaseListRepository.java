@@ -1,9 +1,7 @@
 package com.example.marketList.repositories;
 
-import com.example.marketList.model.PurchaseItem;
 import com.example.marketList.model.PurchaseList;
 import org.springframework.data.jpa.repository.JpaRepository;
-
 import java.util.List;
 
 

@@ -20,25 +20,6 @@ Esta é uma aplicação backend desenvolvida com **Spring Boot** e **MySQL** par
 - **Integração com API Externa**: Busca os preços dos itens a partir de uma API externa de supermercado.
 - **Spring Data JPA**: Padrão de repositório para acesso aos dados.
 
-## Estrutura do Banco de Dados
-
-### `purchase_list` (Lista de Compras)
-- `id`: Identificador único da lista de compras.
-- `date`: Data da lista de compras (por exemplo, o mês da lista).
-- `tenant_id`: Identificador único do usuário/família.
-
-### `purchase_item` (Item da Compra)
-- `id`: Identificador único do item.
-- `name`: Nome do item (por exemplo, "maçã", "leite").
-- `quantity_in_stock`: Quantidade de itens atualmente no estoque.
-- `quantity_to_buy`: Quantidade de itens necessária para o mês.
-- `purchase_list_id`: Chave estrangeira que referencia a tabela `purchase_list`.
-
-### `price_history` (Histórico de Preço)
-- `id`: Identificador único do registro de preço.
-- `price`: Preço do item.
-- `date`: Data do registro de preço.
-- `purchase_item_id`: Chave estrangeira que referencia a tabela `purchase_item`.
 
 ## Instalação
 

@@ -3,27 +3,42 @@ package com.example.marketList.controllers;
 import com.example.marketList.model.PurchaseList;
 import com.example.marketList.service.PurchaseListService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/purchase-lists")
+@RequestMapping("/api/purchaselist")
 public class PurchaseListController {
 
-    @Autowired
-    private PurchaseListService purchaseListService;
+    private final PurchaseListService purchaseListService;
 
-    // Create a new purchase list
-    @PostMapping
-    public PurchaseList createPurchaseList(@RequestBody PurchaseList purchaseList) {
-        return purchaseListService.createPurchaseList(purchaseList);
+    @Autowired
+    public PurchaseListController(PurchaseListService purchaseListService) {
+        this.purchaseListService = purchaseListService;
     }
 
-    // Get all purchase lists for a tenant
+    @PostMapping
+    public ResponseEntity<PurchaseList> createPurchaseList(@RequestBody PurchaseList purchaseList) {
+        PurchaseList createdPurchaseList = purchaseListService.createPurchaseList(purchaseList);
+        return ResponseEntity.ok(createdPurchaseList);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PurchaseList> getPurchaseListById(@PathVariable Long id) {
+        Optional<PurchaseList> purchaseList = purchaseListService.findPurchaseListById(id);
+        return purchaseList.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
     @GetMapping
-    public List<PurchaseList> getPurchaseLists(@RequestHeader("X-Tenant-Id") String tenantId) {
-        return purchaseListService.getAllPurchaseLists(tenantId);
+    public List<PurchaseList> getAllPurchaseLists() {
+        return purchaseListService.findAllPurchaseLists();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePurchaseList(@PathVariable Long id) {
+        purchaseListService.deletePurchaseList(id);
+        return ResponseEntity.noContent().build();
     }
 }
-

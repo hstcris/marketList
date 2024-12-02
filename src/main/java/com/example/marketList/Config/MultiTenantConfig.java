@@ -18,7 +18,7 @@ import java.util.Map;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.example.repository")
+@EnableJpaRepositories(basePackages = "com.example.marketList.repositories")
 public class MultiTenantConfig {
 
     private final TenantIdentifierResolver tenantIdentifierResolver;
@@ -30,13 +30,10 @@ public class MultiTenantConfig {
 
     private Map<Object, Object> getDataSources() {
         Map<Object, Object> dataSources = new HashMap<>();
-
         String tenant1Url = "jdbc:mysql://localhost:3306/market_tenant1";
         String tenant2Url = "jdbc:mysql://localhost:3306/market_tenant2";
-
         dataSources.put("tenant1", createDataSource(tenant1Url));
         dataSources.put("tenant2", createDataSource(tenant2Url));
-
         return dataSources;
     }
 
@@ -46,11 +43,9 @@ public class MultiTenantConfig {
         dataSource.setUsername("root");
         dataSource.setPassword("password");
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-
         return dataSource;
     }
 
-    @Bean
     public DataSource dataSource() {
         AbstractRoutingDataSource dataSourceRouting = new AbstractRoutingDataSource() {
             @Override
@@ -58,16 +53,15 @@ public class MultiTenantConfig {
                 return tenantIdentifierResolver.resolveCurrentTenantIdentifier();
             }
         };
-
         dataSourceRouting.setTargetDataSources(getDataSources());
         return dataSourceRouting;
     }
 
-    @Bean
+    @Bean(name = "multiTenantEntityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource);
-        factoryBean.setPackagesToScan("com.example.model");
+        factoryBean.setPackagesToScan("com.example.marketList.model");
         factoryBean.setPersistenceUnitName("market");
         return factoryBean;
     }

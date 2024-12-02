@@ -1,32 +1,22 @@
 package com.example.marketList.Config;
 
+import com.example.marketList.repositories.PriceHistoryRepository;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.context.annotation.ComponentScan;
 import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "com.example.repository")
+@EnableJpaRepositories(basePackages = "com.example.marketList.repositories")
 @ComponentScan(basePackages = "com.example")
 public class JpaConfig {
 
-    @Bean
-    public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/market");
-        dataSource.setUsername("root");
-        dataSource.setPassword("password");
-        return dataSource;
-    }
-
-    @Bean
+    @Bean(name = "defaultEntityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder, DataSource dataSource) {
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setGenerateDdl(false);

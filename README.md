@@ -32,5 +32,5 @@ Esta é uma aplicação backend desenvolvida com **Spring Boot** e **MySQL** par
 ### Clonar o Repositório
 
 ```bash
-git clone https://github.com/seuusuario/household-shopping-list.git
-cd household-shopping-list
+git clone https://github.com/hstcris/marketList.git
+cd marketList

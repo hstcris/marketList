@@ -1,4 +1,4 @@
-package com.example.marketList.model;
+package com.market.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "purchase_item")
+@Table(name = "tb_purchase_item")
 public class PurchaseItem {
 
     @Id
@@ -29,7 +29,7 @@ public class PurchaseItem {
     private BigDecimal price;
 
     @ManyToOne
-    @JoinColumn(name = "purchase_list_id", referencedColumnName = "id")
+    @JoinColumn(name = "purchase_list_id", referencedColumnName = "id", nullable = false)
     private PurchaseList purchaseList;
 
 }

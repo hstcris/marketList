@@ -1,4 +1,4 @@
-package com.example.marketList.model;
+package com.market.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "price_history")
+@Table(name = "tb_price_history")
 public class PriceHistory {
 
         @Id

@@ -1,4 +1,4 @@
-package com.example.marketList.model;
+package com.market.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -33,5 +33,4 @@ public class PurchaseList {
 
     @OneToMany(mappedBy = "purchaseList", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<PriceHistory> priceHistory;
-
 }

@@ -1,7 +1,7 @@
-package com.example.marketList.controllers;
+package com.market.controllers;
 
-import com.example.marketList.model.PurchaseList;
-import com.example.marketList.service.PurchaseListService;
+import com.market.model.PurchaseList;
+import com.market.service.PurchaseListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,7 @@
-package com.market.service;
+package com.market.model.service;
 
-import com.market.model.PriceHistory;
-import com.market.repositories.PriceHistoryRepository;
+import com.market.model.entity.PriceHistory;
+import com.market.model.repositories.PriceHistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

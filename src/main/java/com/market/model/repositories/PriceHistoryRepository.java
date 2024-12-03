@@ -1,6 +1,6 @@
-package com.market.repositories;
+package com.market.model.repositories;
 
-import com.market.model.PriceHistory;
+import com.market.model.entity.PriceHistory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

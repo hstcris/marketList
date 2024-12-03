@@ -11,5 +11,4 @@ public class MarketListApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MarketListApplication.class, args);
 	}
-
 }

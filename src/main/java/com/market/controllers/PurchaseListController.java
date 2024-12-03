@@ -1,7 +1,7 @@
 package com.market.controllers;
 
-import com.market.model.PurchaseList;
-import com.market.service.PurchaseListService;
+import com.market.model.entity.PurchaseList;
+import com.market.model.service.PurchaseListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

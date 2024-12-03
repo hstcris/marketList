@@ -1,7 +1,7 @@
-package com.market.service;
+package com.market.model.service;
 
-import com.market.model.PurchaseList;
-import com.market.repositories.PurchaseListRepository;
+import com.market.model.entity.PurchaseList;
+import com.market.model.repositories.PurchaseListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;

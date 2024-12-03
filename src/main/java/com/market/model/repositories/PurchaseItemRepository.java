@@ -1,7 +1,7 @@
-package com.market.repositories;
+package com.market.model.repositories;
 
 
-import com.market.model.PurchaseItem;
+import com.market.model.entity.PurchaseItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

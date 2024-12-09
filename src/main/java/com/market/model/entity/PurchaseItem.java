@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.math.BigDecimal;
 
 @Getter
@@ -14,7 +13,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Entity
 @Table(name = "tb_purchase_item")
-public class PurchaseItem {
+public class PurchaseItem extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,13 +23,9 @@ public class PurchaseItem {
     private String productName;
 
     @Column(name = "quantity", nullable = false)
-    private Integer quantity;
+    private int quantity;
 
-    @Column(name = "price", nullable = false)
+    @Column(name = "price", nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
-
-    @ManyToOne
-    @JoinColumn(name = "purchase_list_id", referencedColumnName = "id", nullable = false)
-    private PurchaseList purchaseList;
 
 }

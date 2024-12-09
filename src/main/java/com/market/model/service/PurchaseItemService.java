@@ -4,8 +4,6 @@ import com.market.model.entity.PurchaseItem;
 import com.market.model.repositories.PurchaseItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,10 +22,6 @@ public class PurchaseItemService {
 
     public Optional<PurchaseItem> findPurchaseItemById(Long id) {
         return purchaseItemRepository.findById(id);
-    }
-
-    public List<PurchaseItem> findPurchaseItemsByListId(Long purchaseListId) {
-        return purchaseItemRepository.findByPurchaseListId(purchaseListId);
     }
 
     public void deletePurchaseItem(Long id) {

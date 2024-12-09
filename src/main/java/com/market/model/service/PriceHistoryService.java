@@ -4,8 +4,6 @@ import com.market.model.entity.PriceHistory;
 import com.market.model.repositories.PriceHistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,7 +24,4 @@ public class PriceHistoryService {
         return priceHistoryRepository.findById(id);
     }
 
-    public List<PriceHistory> findPriceHistoryByItemId(Long itemId) {
-        return priceHistoryRepository.findByItemId(itemId);
-    }
 }

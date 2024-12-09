@@ -4,7 +4,6 @@ import com.market.model.entity.PurchaseList;
 import com.market.model.repositories.PurchaseListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 

@@ -1,8 +1,8 @@
-package com.example.marketList.repositories;
+package com.market.model.repositories;
 
-
-import com.example.marketList.model.PurchaseItem;
+import com.market.model.entity.PurchaseItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PurchaseItemRepository extends JpaRepository<PurchaseItem, Long> {
+
 }

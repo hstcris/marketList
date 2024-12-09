@@ -1,4 +1,4 @@
-package com.example.marketList.model;
+package com.market.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,8 +13,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "price_history")
-public class PriceHistory {
+@Table(name = "tb_price_history")
+public class PriceHistory extends BaseEntity {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,17 +23,9 @@ public class PriceHistory {
         @Column(name = "product_name", nullable = false)
         private String productName;
 
-        @Column(name = "price", nullable = false)
+        @Column(name = "price", nullable = false, precision = 10, scale = 2)
         private BigDecimal price;
 
         @Column(name = "date", nullable = false)
         private LocalDate date;
-
-        @ManyToOne
-        @JoinColumn(name = "purchase_list_id", referencedColumnName = "id")
-        private PurchaseList purchaseList;
-
-        @Column(name = "tenant_id", nullable = false)
-        private String tenantId;
-
 }

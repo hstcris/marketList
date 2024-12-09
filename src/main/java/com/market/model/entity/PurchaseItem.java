@@ -1,4 +1,4 @@
-package com.example.marketList.model;
+package com.market.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,8 +12,8 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "purchase_item")
-public class PurchaseItem {
+@Table(name = "tb_purchase_item")
+public class PurchaseItem extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,13 +23,9 @@ public class PurchaseItem {
     private String productName;
 
     @Column(name = "quantity", nullable = false)
-    private Integer quantity;
+    private int quantity;
 
-    @Column(name = "price", nullable = false)
+    @Column(name = "price", nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
-
-    @ManyToOne
-    @JoinColumn(name = "purchase_list_id", referencedColumnName = "id")
-    private PurchaseList purchaseList;
 
 }

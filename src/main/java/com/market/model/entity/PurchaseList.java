@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tb_purchase_list")
+@Table(name = "tb_purchase_list_new")
 public class PurchaseList extends BaseEntity{
 
     @Id
@@ -23,5 +23,4 @@ public class PurchaseList extends BaseEntity{
 
     @Column(name = "month", nullable = false)
     private String month;
-
 }

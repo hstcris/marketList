@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tb_purchase_item")
+@Table(name = "tb_purchase_item_new")
 public class PurchaseItem extends BaseEntity {
 
     @Id
@@ -27,5 +27,4 @@ public class PurchaseItem extends BaseEntity {
 
     @Column(name = "price", nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
-
 }

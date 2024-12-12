@@ -1,5 +1,6 @@
 package com.market.model.entity;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tb_price_history")
+@Table(name = "tb_price_history_new")
 public class PriceHistory extends BaseEntity {
 
         @Id

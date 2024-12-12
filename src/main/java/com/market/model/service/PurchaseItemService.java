@@ -2,10 +2,12 @@ package com.market.model.service;
 
 import com.market.model.entity.PurchaseItem;
 import com.market.model.repositories.PurchaseItemRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 
+@Transactional
 @Service
 public class PurchaseItemService {
 

@@ -5,5 +5,5 @@ import com.market.model.entity.user.User;
 import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-    Optional<User> findByEmailIgnoreCase(String email);
+    Optional<User> findByEmailIgnoreCaseAndTenantId(String email, String tenantId);
 }

@@ -3,6 +3,9 @@ package com.market.model.entity.user;
 import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.market.model.entity.BaseEntity;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,8 +18,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tb_users")
-public class User implements UserDetails {
+@Table(name = "users")
+public class User extends BaseEntity implements UserDetails {
 	
 
 	@Id
@@ -31,6 +34,9 @@ public class User implements UserDetails {
 	
 	@Column(name = "password")
     private String password;
+	
+	@Column(name = "user_name")
+	private String userName;
 	
 
     @Override
@@ -51,4 +57,8 @@ public class User implements UserDetails {
     public String getNome() {
         return name;
     }
+
+	public String getUserName() {
+		return userName;
+	}
 }
